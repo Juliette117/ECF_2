@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\New_;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +24,54 @@ Route::get('/', function () {
   return view('welcome', ["animes" => $animes]);
 });
 
+Route::get('/top', function(){
+  return view('top');
+});
+
+Route::get('/watchlist', function(){
+  return view('watchlist');
+});
+
+
+Route::post('/anime/{id}add_to_watch_list', function ($id) {
+  if(Auth::user()){
+    $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
+    return view('add_to_watch_list', ["anime" => $anime]);
+  } else {
+    return view('login');
+  }
+});
+
+  Route::get('/anime/{id}/add_to_watch_list', function ($id) {
+    if(Auth::user()){
+      $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
+      return view('add_to_watch_list', ["anime" => $anime]);
+    } else {
+      return view('login');
+    }
+});
+
 Route::get('/anime/{id}', function ($id) {
   $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
   return view('anime', ["anime" => $anime]);
 });
 
-Route::get('/anime/{id}/new_review', function ($id) {
-  return view('new_review');
+Route::post('/anime/{id}/new_review', function ($id) {
+  if(Auth::user()){
+    $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
+    return view('new_review', ["anime" => $anime]);
+  } else {
+    return view('login');
+  }
+});
+
+  Route::get('/anime/{id}/new_review', function ($id) {
+    if(Auth::user()){
+      $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
+      return view('new_review', ["anime" => $anime]);
+    } else {
+      return view('login');
+    }
 });
 
 Route::get('/login', function () {
@@ -72,3 +116,7 @@ Route::post('signout', function (Request $request) {
   $request->session()->regenerateToken();
   return redirect('/');
 });
+
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -49,5 +49,15 @@ class DatabaseSeeder extends Seeder
         'description' => 'Onizuka, un ancien loubard, se met en tête de devenir un grand professeur avec sa vision très personnelle de l\'éducation... ',
         'cover' => 'gto.jpg',
       ]);
+      DB::table('animes')->insert([
+        'title' => 'Excel Saga',
+        'description' => 'Excel Saga est une série se définissant comme de l\'animation expérimentale. À ce titre, l\'humour, très souvent irrationnel est lui aussi assez expérimental, voire inédit dans l\'animation japonaise.',
+        'cover' => 'excelsaga.jpg',
+      ]);
+      DB::table('animes')->insert([
+        'title' => 'Fullmetal Alchemist ',
+        'description' => 'En voulant ressusciter leur mère, Edward et Alphonse Elric vont utiliser une technique interdite relevant du domaine de l\'alchimie : la transmutation humaine. Seulement, l\'expérience va mal tourner...',
+        'cover' => 'fma.jpg',
+      ]);
     }
 }
