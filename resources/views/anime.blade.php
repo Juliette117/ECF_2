@@ -9,14 +9,18 @@
         <img alt="" src="/covers/{{ $anime->cover }}" />
       </div>
       <h1>{{ $anime->title }}</h1>
-    </header>
+      </header>
+     
+
+  
     <p>{{ $anime->description }}</p>
+    <br>
     <div>
       <div class="actions">
         <div>
           <a class="cta" href="/anime/{{ $anime->id }}/new_review">Écrire une critique</a>
         </div>
-        <form action="/anime/{{ $anime->id }}/add_to_watch_list" method="POST">
+        <form action="/anime/{{ $anime->id }}/watchlist" method="POST">
           <button class="cta">Ajouter à ma watchlist</button>
         </form>
       </div>

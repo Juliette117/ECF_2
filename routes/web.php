@@ -24,32 +24,36 @@ Route::get('/', function () {
   return view('welcome', ["animes" => $animes]);
 });
 
-Route::get('/top', function(){
-  return view('top');
-});
+// Route::get('/top', function(){
+  // return view('top');
+// });
+
 
 Route::get('/watchlist', function(){
-  return view('watchlist');
-});
-
-
-Route::post('/anime/{id}add_to_watch_list', function ($id) {
   if(Auth::user()){
-    $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
-    return view('add_to_watch_list', ["anime" => $anime]);
+  return view('watchlist');
   } else {
     return view('login');
   }
 });
 
-  Route::get('/anime/{id}/add_to_watch_list', function ($id) {
-    if(Auth::user()){
-      $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
-      return view('add_to_watch_list', ["anime" => $anime]);
-    } else {
-      return view('login');
-    }
-});
+
+// Route::post('/anime/{id}/add_to_watch_list', function ($id) {
+  // if(Auth::user()){
+    // return view('watchlist');
+  // } else {
+    // return view('login');
+  // }
+// });
+
+  // Route::get('/anime/{id}/add_to_watch_list', function ($id) {
+    // if(Auth::user()){
+      // $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
+      // return view('watchlist');
+    // } else {
+      // return view('login');
+    // }
+// });
 
 Route::get('/anime/{id}', function ($id) {
   $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
