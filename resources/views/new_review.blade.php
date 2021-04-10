@@ -21,7 +21,6 @@
 
 <?php
 
-use Illuminate\Support\Facades\Auth;
 
 try
 {
@@ -60,14 +59,12 @@ try
         }
   
             if (isset($bdd)) {
-              //Affiche commnetaires et notes
-              // DESC = ordre décroissant 
               $resp = $bdd->query("SELECT comment, rating FROM review WHERE anime_id = ".$anime->id." ORDER BY ID DESC");
             
                 while ($data = $resp->fetch())
             {
                 echo '<br>';
-                echo nl2br('<div class="cta" style= "margin-left: 30px">' . 'Commentaire:' . htmlspecialchars($data['comment']) . '<br>' . '</div>');
+                echo nl2br('<div class="cta" style= "margin-left: 170px">' . 'Commentaire: ' . htmlspecialchars($data['comment']) . '<br>' . '</div>');
                 echo nl2br('<div class="cta">' .  ' Note:' . htmlspecialchars($data['rating']) . ' / 10 ' . '</div>' . '<br>');
                 
             }

@@ -10,8 +10,6 @@
       </div>
       <h1>{{ $anime->title }}</h1>
       </header>
-     
-
   
     <p>{{ $anime->description }}</p>
     <br>
@@ -20,7 +18,8 @@
         <div>
           <a class="cta" href="/anime/{{ $anime->id }}/new_review">Écrire une critique</a>
         </div>
-        <form action="/anime/{{ $anime->id }}/watchlist" method="POST">
+        <form action="/anime/{{$anime->id}}/watchlist" method="POST">
+        @csrf
           <button class="cta">Ajouter à ma watchlist</button>
         </form>
       </div>

@@ -14,13 +14,9 @@ try
     catch(PDOException $e){
       echo "Erreur : " . $e->getMessage();
     } 
-    //$reponse = $bdd->query("SELECT ROUND(AVG(rating), 1) as note FROM review WHERE anime_id = '".$anime->id."' ");
-      $reponse = $bdd->query("SELECT ROUND(AVG(rating), 1) as note FROM review ");
-        while ($donnees = $reponse->fetch())
+    
+      $reponse = $bdd->query("SELECT ROUND(AVG(rating), 1) as note, title, cover FROM review INNER JOIN animes WHERE review.anime_id = animes.id GROUP BY anime_id ORDER by note DESC "); 
+        while ($data = $reponse->fetch())
         {
-         
-          echo '<div><strong> La moyenne générale de l\'anime est de <div class="cta">' .  $donnees['note'] . '</div></div>' ;
-          echo '<br>';
-          echo '<br>';
+        echo nl2br('<div class="cta">'  . htmlspecialchars($data['title']) . " => ".  htmlspecialchars($data['note']) . "  <img style ='width:25%;' src='/covers/".($data['cover'])."' /></div> <br>"); 
         }
-        ?>
