@@ -29,6 +29,7 @@ html:focus-within {
     scroll-behavior: smooth;
 }
 body {
+    background-color: #394b5a;
     min-height: 100vh;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
@@ -74,9 +75,19 @@ h2 {
     font-family: "Poppins", sans-serif;
     font-weight: bold;
 }
+h3{
+    font-family: "Poppins", sans-serif;
+    font-size: 50px;
+    background-color: #FAFAFA;
+    padding: 10px;
+    color: black;
+    border-radius: 5px;
+    
+}
 
 .flow > * + * {
     margin-top: 1rem;
+    
 }
 
 header.topnav {
@@ -89,11 +100,12 @@ header.topnav .inner {
     align-items: center;
     max-width: 110ch;
     margin: 0 auto;
+    color: white;
 }
 
 .logo {
     text-decoration: none;
-    color: inherit;
+    color: white;
     font-family: "Poppins", sans-serif;
 }
 
@@ -108,14 +120,14 @@ nav > * {
 }
 
 nav a {
-    color: inherit;
+    color: white;
     text-decoration: none;
 }
 
 nav button {
     background: none;
     border: none;
-    color: black;
+    color: white;
     cursor: pointer;
 }
 
@@ -123,12 +135,17 @@ main {
     max-width: 80ch;
     margin: 5rem auto;
     padding: 1rem;
+    background-color: #FAFAFA;
+    border-radius: 5px;
 }
 
 .anime-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-gap: 4rem;
+    font-size: 20px;
+    color: #FAFAFA;
+    
 }
 
 .anime-list li {
@@ -138,22 +155,26 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    color: black;
 }
 
 .anime-list img {
     border: 4px solid;
+    color: black;
 }
 
 .anime-list h2 {
     font-size: 1.1rem;
+    color: black;
 }
-
 .anime .actions {
     display: flex;
     margin: -1rem;
+    color: black;
 }
 .anime .actions > * {
     margin: 1rem;
+    color: black;
 }
 
 .cta {
@@ -164,9 +185,9 @@ main {
     text-decoration: none;
     display: inline-block;
     padding: 0.5rem 1rem;
-    color: inherit;
+    color: black;
     box-shadow: 0.25rem 0.25rem 0 black;
-    background: white;
+    background: #FAFAFA;
 }
 
 article > * + * {

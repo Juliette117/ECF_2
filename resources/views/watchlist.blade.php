@@ -39,7 +39,7 @@ try
             while ($data = $resp->fetch())
         {
 
-            echo nl2br('<div class="anime-list">' . "<img style ='width:50%;' src='/covers/".($data['cover'])."' />" . ' À regarder:' . htmlspecialchars($data['title'])  . '</div> <br>');
+            echo nl2br('<div class="anime-list">' . "<img class style ='width:50%; margin:50px' src='/covers/".($data['cover'])."' />" . htmlspecialchars($data['title'])  . '</div> <br>');
 
             
                                                                                     

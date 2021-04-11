@@ -18,5 +18,5 @@ try
       $reponse = $bdd->query("SELECT ROUND(AVG(rating), 1) as note, title, cover FROM review INNER JOIN animes WHERE review.anime_id = animes.id GROUP BY anime_id ORDER by note DESC "); 
         while ($data = $reponse->fetch())
         {
-        echo nl2br('<div class="cta">'  . htmlspecialchars($data['title']) . " => ".  htmlspecialchars($data['note']) . "  <img style ='width:25%;' src='/covers/".($data['cover'])."' /></div> <br>"); 
+        echo nl2br('<div class="cta">'  . htmlspecialchars($data['title']) . " - ".  htmlspecialchars($data['note']) . "  <img style ='width:25%;' src='/covers/".($data['cover'])."' /></div> <br>"); 
         }
