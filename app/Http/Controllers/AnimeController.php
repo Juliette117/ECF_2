@@ -42,35 +42,20 @@ class AnimeController extends Controller
         return view('anime', ["anime" => $anime]);
     }
     
-    // public function addReview($id){
-        // if(Auth::user()){
-            // $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
-            // // $validateData = $request->validate(["comment" => "required"]); 
-            // // $review = new Review();
-            // // $review->content = $validateData["comment"];
-            // // $review->save();
-            // return view('new_review', ["anime" => $anime]);
-          // } else {
-            // return view('login');
-          // }
-    // }
 
     public function addReview(Request $request, $id){
-      
       if(Auth::user()){
           $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
-
-          // $validateData = $request->validate(["comment" => "required"]); 
-          $review = Review::find($id);
-          $review->comment = $request->input('comment');
-          $review->rating = $request->input('rating');
-          $review->user_id = Auth::id();
-          $review->anime_id = $id;
-          $review->save();
+          // $review = Review::find($id);
+          // $review->comment = $request->input('comment');
+          // $review->rating = $request->input('rating');
+          // $review->user_id = Auth::id();
+          // $review->anime_id = $id;
+          // $review->save();
           
           return view('new_review', ["anime" => $anime]);
-        // } else {
-          // return view('login');
+        } else {
+          return view('login');
         }
   }
 
@@ -122,6 +107,7 @@ class AnimeController extends Controller
       {
 
       }
+      
 
 }
 
