@@ -9,8 +9,7 @@
           <h2>
             {{ $anime->title }}
           </h2>
-          <?php
-
+<?php 
 try
 {
     $bdd = new PDO("mysql:host=localhost;dbname=anime_ranking", "miyako", "D67Yg7sAb"); 
@@ -20,11 +19,10 @@ try
     catch(PDOException $e){
       echo "Erreur : " . $e->getMessage();
     } 
-
       $resp = $bdd->query("SELECT ROUND(AVG(rating), 1) as note FROM review WHERE anime_id = '".$anime->id."' ");
         while ($data = $resp->fetch())
         {
-         
+        //  
           echo '<div class="cta">' . $data['note'] . '</div>' ;
         }
         ?>
@@ -35,3 +33,58 @@ try
     @endforeach
   </ul>
 </x-layout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

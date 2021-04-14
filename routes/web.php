@@ -25,9 +25,11 @@ Route::get('/watchlist', [AnimeController::class, 'watchlist']);
 Route::post('/anime/{id}/watchlist', [AnimeController::class, 'displayWatchlist']);
 
 //Affiche la fiche de l'anime
-Route::get('/anime/{id}', [AnimeController::class, 'displayFicheAnime']);
+Route::get('/anime/{id}', [AnimeController::class, 'displayFicheAnime'])->name("displayFicheAnime");
 
 //Page pour ajouter un commentaire
+Route::get('/anime/{id}/displayReviewForm', [AnimeController::class, 'displayReviewForm']);
+Route::post('/anime/{id}/displayReviewForm', [AnimeController::class, 'displayReviewForm']);
 Route::get('/anime/{id}/new_review', [AnimeController::class, 'addReview']);
 Route::post('/anime/{id}/new_review', [AnimeController::class, 'addReview']);
 

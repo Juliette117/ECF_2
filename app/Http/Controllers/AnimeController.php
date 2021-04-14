@@ -39,24 +39,33 @@ class AnimeController extends Controller
    
     public function displayFicheAnime($id){
         $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
-        return view('anime', ["anime" => $anime]);
+        $reviews = DB::select("SELECT comment, rating FROM review WHERE anime_id = $id ORDER BY ID DESC");
+        // en orange = le nom que j'appelle dans la vue
+        // en bleu = le nom de la variable dans le controller
+        return view('anime', ["anime" => $anime, "Reviews" => $reviews]);
+
     }
     
 
-    public function addReview(Request $request, $id){
+    public function displayReviewForm($id){
+
       if(Auth::user()){
-          $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
-          // $review = Review::find($id);
-          // $review->comment = $request->input('comment');
-          // $review->rating = $request->input('rating');
-          // $review->user_id = Auth::id();
-          // $review->anime_id = $id;
-          // $review->save();
-          
-          return view('new_review', ["anime" => $anime]);
-        } else {
-          return view('login');
-        }
+        $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
+        $reviewNumber = DB::select("SELECT * FROM review WHERE user_id = Auth::id() AND anime_id = $id");      
+        return view('new_review', ["anime" => $anime, "reviewNimber => $reviewNumber"]);
+      } else {
+        return view('login');
+      }
+      
+    }
+
+  
+    public function addReview(Request $request, $id){
+    
+     DB::insert("INSERT INTO review(comment, rating, user_id, anime_id) VALUES (?, ?, ?, ?)", [$request["review"], $request["rating"], Auth::id(), $id]);  
+     
+      return redirect()->route("displayFicheAnime", $id);
+      
   }
 
     public function displayLogin(){

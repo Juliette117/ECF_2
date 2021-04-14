@@ -16,7 +16,7 @@
     <div>
       <div class="actions">
         <div>
-          <a class="cta" href="/anime/{{ $anime->id }}/new_review">Écrire une critique</a>
+          <a class="cta" href="/anime/{{ $anime->id }}/displayReviewForm">Écrire une critique</a>
         </div>
         <form action="/anime/{{$anime->id}}/watchlist" method="POST">
         @csrf
@@ -26,3 +26,10 @@
     </div>
   </article>
 </x-layout>
+<div class="reviewsContainer cta">
+  <ul>
+    @foreach ($Reviews as $review)
+        <li>{{$review->comment}} - {{$review->rating}}/10</li>
+    @endforeach
+  </ul>
+</div>
