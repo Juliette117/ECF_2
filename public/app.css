@@ -139,6 +139,10 @@ main {
     border-radius: 5px;
 }
 
+li{
+    list-style: none;
+}
+
 .anime-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
@@ -188,6 +192,10 @@ main {
     color: black;
     box-shadow: 0.25rem 0.25rem 0 black;
     background: #FAFAFA;
+}
+
+.reviewsContainer {
+    margin-left: 3000px;
 }
 
 article > * + * {

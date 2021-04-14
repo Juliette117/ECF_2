@@ -30,6 +30,7 @@ class AnimeController extends Controller
 
     public function displayWatchlist($id){
         if(Auth::user()){
+             // [0] = parce que le select renvoie un tableau
             $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
             return view('watchlist', ["anime" => $anime]);
             } else {
