@@ -51,8 +51,10 @@ class AnimeController extends Controller
 
       if(Auth::user()){
         $anime = DB::select("SELECT * FROM animes WHERE id = ?", [$id])[0];
-        $reviewNumber = DB::select("SELECT * FROM review WHERE user_id = Auth::id() AND anime_id = $id");      
-        return view('new_review', ["anime" => $anime, "reviewNimber => $reviewNumber"]);
+        // ? = éviter les injections sql
+        $query = DB::select("SELECT * FROM review WHERE user_id = ? AND anime_id = ? ", [ Auth::id(), $id]);    
+        $reviewNumber = count($query);  
+        return view('new_review', ["anime" => $anime, "reviewNumber" => $reviewNumber]);
       } else {
         return view('login');
       }

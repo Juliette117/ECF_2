@@ -5,21 +5,42 @@
 
   <h1>Nouvelle Critique de {{ $anime->title }}</h1>
 
+  @if($reviewNumber === 0)
+  <form action="/anime/{{$anime->id}}/new_review" method="POST">
+    @csrf
+    <label for="review">Écrire une critique :</label>
+    <textarea class="cta" id="review" name="review"
+              rows="5" cols="30" required></textarea>
+    
+    <label for="rating">Note</label>
+     <input class= "cta " type="number" id="rating" name="rating"
+           min="0" max="10" required>
+     <button class="cta" type="submit">Noter</button> 
+    </form>
+  @else
+  <h2>Vous ne pouvez pas rédiger un deuxième commentaire</h2>
+  <a class="cta" href="/">Retourner à la page d'accueil</a>
+  
+  @endif
 
-<form action="/anime/{{$anime->id}}/new_review" method="POST">
-@csrf
-<label for="review">Écrire une critique :</label>
-<textarea class="cta" id="review" name="review"
-          rows="5" cols="30" required></textarea>
 
-<label for="rating">Note</label>
- <input class= "cta " type="number" id="rating" name="rating"
-       min="0" max="10" required>
- <button class="cta" type="submit">Noter</button> 
-</form>
 </x-layout>
 
 <?php
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // try
