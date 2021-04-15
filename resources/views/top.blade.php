@@ -1,5 +1,8 @@
 <x-layout>
 <h3>Top</h3>
+{{-- @foreach($animes as $anime) --}}
+{{-- <div class="cta">{{ $anime->top }}</div> --}}
+{{-- @endforeach --}}
 </x-layout>
 
 <?php
@@ -15,7 +18,7 @@ try
       echo "Erreur : " . $e->getMessage();
     } 
     
-      $reponse = $bdd->query("SELECT ROUND(AVG(rating), 1) as note, title, cover FROM review INNER JOIN animes WHERE review.anime_id = animes.id GROUP BY anime_id ORDER by note DESC "); 
+      $reponse = $bdd->query("SELECT ROUND(AVG(rating), 1) as note, title, cover FROM review INNER JOIN animes WHERE review.anime_id = animes.id GROUP BY anime_id ORDER BY note DESC "); 
         while ($data = $reponse->fetch())
         {
         echo nl2br('<div class="cta">'  . htmlspecialchars($data['title']) . " - ".  htmlspecialchars($data['note']) . "  <img style ='width:25%;' src='/covers/".($data['cover'])."' /></div> <br>"); 

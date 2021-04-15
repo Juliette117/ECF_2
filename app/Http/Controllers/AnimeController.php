@@ -17,14 +17,31 @@ class AnimeController extends Controller
         $moyenne = DB::select("SELECT ROUND(AVG(rating), 1) as note FROM review WHERE anime_id = $anime->id ")[0];
         $anime->moyenne = $moyenne->note;
         };
-        return view('welcome', ['animes' => $animes]);
+        return view('welcome', ["animes" => $animes]);
         
     }
-
+ 
     public function displayTop() {
-        return view('top');
+      // $animes = DB::select("SELECT * FROM animes");
+      // foreach($animes as $anime){
+        // $top = DB::table('review')
+        // ->select('title', DB::raw("avg(rating) as note"), 'description', 'cover', 'anime_id', 'user_id')
+        // ->join('animes', 'reviews.anime_id', '=', 'animes.id')
+        // ->groupBy('anime_id')
+        // ->havingRaw('AVG(rating) 1')
+        // ->get();
+        
+      //};
+        return view('top'); //["animes" => $top]); 
     }
     
+    public function watchlist(){
+        if(Auth::user()){
+            return view('watchlist');
+            } else {
+              return view('login');
+            }
+    }
 
     public function displayWatchlist($id){
         if(Auth::user()){

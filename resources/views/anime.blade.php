@@ -27,8 +27,10 @@
   </article>
 </x-layout>
 <div class="reviewsContainer cta">
+  <p class= "cta">Commentaires :</p>
   <ul>
     @foreach ($Reviews as $review)
+      <br>
         <li>{{$review->comment}} - {{$review->rating}}/10</li>
     @endforeach
   </ul>

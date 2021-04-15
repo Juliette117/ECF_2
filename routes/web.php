@@ -20,17 +20,16 @@ Route::get('/', [AnimeController::class, 'displayListAnime']);
 //Affiche le Top
 Route::get('/top', [AnimeController::class, 'displayTop']);
 
-//Affiche la watchlist
+//Affiche la page watchlist
 Route::get('/watchlist', [AnimeController::class, 'watchlist']);
+//Affiche l'anime dans la wathlist
 Route::post('/anime/{id}/watchlist', [AnimeController::class, 'displayWatchlist']);
 
-//Affiche la fiche de l'anime
+//Affiche la description de l'anime
 Route::get('/anime/{id}', [AnimeController::class, 'displayFicheAnime'])->name("displayFicheAnime");
 
 //Page pour ajouter un commentaire
 Route::get('/anime/{id}/displayReviewForm', [AnimeController::class, 'displayReviewForm']);
-Route::post('/anime/{id}/displayReviewForm', [AnimeController::class, 'displayReviewForm']);
-Route::get('/anime/{id}/new_review', [AnimeController::class, 'addReview']);
 Route::post('/anime/{id}/new_review', [AnimeController::class, 'addReview']);
 
 //Page pour se connecter

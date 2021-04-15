@@ -195,7 +195,8 @@ li{
 }
 
 .reviewsContainer {
-    margin-left: 300px;
+    margin-left: 500px;
+    margin-top: -20px;
 }
 
 article > * + * {
