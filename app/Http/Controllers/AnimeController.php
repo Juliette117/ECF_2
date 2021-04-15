@@ -13,20 +13,18 @@ class AnimeController extends Controller
 {
     public function displayListAnime() {
         $animes = DB::select("SELECT * FROM animes");
+        foreach($animes as $anime){
+        $moyenne = DB::select("SELECT ROUND(AVG(rating), 1) as note FROM review WHERE anime_id = $anime->id ")[0];
+        $anime->moyenne = $moyenne->note;
+        };
         return view('welcome', ['animes' => $animes]);
+        
     }
 
     public function displayTop() {
         return view('top');
     }
     
-    public function watchlist(){
-        if(Auth::user()){
-            return view('watchlist');
-            } else {
-              return view('login');
-            }
-    }
 
     public function displayWatchlist($id){
         if(Auth::user()){
